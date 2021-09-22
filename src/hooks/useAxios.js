@@ -10,6 +10,7 @@ export function useAxios(url) {
   const [response, setResponse] = useState(initialState);
 
   useEffect(() => {
+    // TODO: we should handle if !url else it will remain in its initialState
     if (url) {
       setResponse(initialState);
       axios

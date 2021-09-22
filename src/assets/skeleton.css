@@ -25,14 +25,18 @@
 - Media Queries
 */
 
+:root {
+		--gray: #80808045;
+}
+
 
 /* Grid
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 .container {
   position: relative;
   width: 100%;
-  max-width: 960px;
-  margin: 0 auto;
+  max-width: 1600px;
+  margin: 24px auto;
   padding: 0 20px;
   box-sizing: border-box; }
 .column,
@@ -323,8 +327,7 @@ pre > code {
 /* Tables
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 table {
-  min-width: 1600px;
-	min-height: 500px;
+		margin: auto;
 }
 th,
 td {
@@ -368,7 +371,10 @@ form {
   box-sizing: border-box; }
 .u-max-full-width {
   max-width: 100%;
-  box-sizing: border-box; }
+  box-sizing: border-box; 
+	overflow: auto;
+	position: relative;
+}
 .u-pull-right {
   float: right; }
 .u-pull-left {
@@ -382,6 +388,19 @@ hr {
   margin-bottom: 3.5rem;
   border-width: 0;
   border-top: 1px solid #E1E1E1; }
+
+.spinner {
+  position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background: url('../spinner.gif');
+	background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+	height: 50px;
+	width: 50px;
+}
 
 
 /* Clearing

@@ -1,6 +1,6 @@
-import { useState } from "react";
 import { ErrorBoundary, Table } from "./components";
-import { endpoints, responseStatus } from "./constants";
+import { endpoints } from "./constants";
+import "./assets/normalize.css";
 import "./assets/skeleton.css";
 
 const { PEOPLE } = endpoints;
@@ -8,12 +8,7 @@ const { PEOPLE } = endpoints;
 function App() {
   return (
     <ErrorBoundary>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-        }}
-      >
+      <div className="container">
         <Table url={PEOPLE} />
       </div>
     </ErrorBoundary>
