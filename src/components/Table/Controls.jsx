@@ -62,10 +62,7 @@ export function Controls({
   const params = new URLSearchParams(urlObj.search);
   const page = params.get("page") || 1;
 
-  const pages = [];
-  for (let i = 1; i < totalPages + 1; i++) {
-    pages.push(i);
-  }
+  const pages = new Array(totalPages).fill().map((_, i) => i + 1);
 
   const [selectedPage, setSelectedPage] = useState(page);
   useUpdateEffect(() => {
