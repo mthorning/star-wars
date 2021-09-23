@@ -50,12 +50,12 @@ export function Table({ url: initialUrl }) {
   // TODO: Better error handling.
   if (status === REJECTED) throw new Error(payload);
 
-  const { results: people = [], next, previous } = payload;
+  const { results: people = [], next, previous, count } = payload;
 
   // TODO: Show a "No data" message if nil results.
   return (
     <>
-      <Controls {...{ initialUrl, setUrl, next, previous }} />
+      <Controls {...{ initialUrl, url, setUrl, next, previous, count }} />
       <div
         style={{
           border: "1px solid var(--gray)",

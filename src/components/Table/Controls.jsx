@@ -48,7 +48,31 @@ function Search({ search, setSearch }) {
   );
 }
 
-export function Controls({ initialUrl, setUrl, next, previous }) {
+export function Controls({
+  initialUrl,
+  url,
+  setUrl,
+  next,
+  previous,
+  count = 0,
+}) {
+  const totalPages = Math.ceil(count / 10);
+
+  const urlObj = new URL(url);
+  const params = new URLSearchParams(urlObj.search);
+  const page = params.get("page") || 1;
+
+  const pages = [];
+  for (let i = 1; i < totalPages + 1; i++) {
+    pages.push(i);
+  }
+
+  const [selectedPage, setSelectedPage] = useState(page);
+  useUpdateEffect(() => {
+    params.set("page", selectedPage);
+    setUrl(`${initialUrl}?${params.toString()}`);
+  }, [selectedPage]);
+
   const [search, setSearch] = useState("");
 
   useUpdateEffect(() => {
@@ -57,7 +81,16 @@ export function Controls({ initialUrl, setUrl, next, previous }) {
 
   return (
     <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <select
+        value={selectedPage}
+        onChange={(event) => setSelectedPage(event.target.value)}
+      >
+        {pages.map((page) => (
+          <option value={page}>{page}</option>
+        ))}
+      </select>
       <Search {...{ search, setSearch }} />
+      {`${page} / ${totalPages}`}
       <PaginationControls {...{ next, previous, setUrl }} />
     </div>
   );
