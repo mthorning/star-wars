@@ -1,25 +1,17 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { ErrorBoundary, Table } from "./components";
+import { endpoints } from "./constants";
+import "./assets/normalize.css";
+import "./assets/skeleton.css";
+
+const { PEOPLE } = endpoints;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ErrorBoundary>
+      <div className="container">
+        <Table url={PEOPLE} />
+      </div>
+    </ErrorBoundary>
   );
 }
 
